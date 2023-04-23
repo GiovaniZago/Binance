@@ -2,7 +2,7 @@
 const api = require('./api');
 const Binance = require('node-binance-api');
 const binance = new Binance();
-const connStr = "Server=GIOVANI;Database=BOT;trustServerCertificate=true;User Id=sa;Password=123456;";
+const connStr = "Server=localhost;Database=master;trustServerCertificate=true;User Id=sa;Password=Janeiro@2023;";
 const sql = require("mssql");
 var timestamp = new Date().getTime();
 var PriceBTC  = '0'

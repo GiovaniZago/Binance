@@ -1,11 +1,11 @@
 const express = require('express');
 const app = express();         
 const bodyParser = require('body-parser');
-const port = 3000; //porta padrão
-const connStr = "Server=GIOVANI;Database=BOT;trustServerCertificate=true;User Id=sa;Password=123456;";
+const port = 3000; //porta padrï¿½o
+const connStr = "Server=localhost;Database=master;trustServerCertificate=true;User Id=sa;Password=Janeiro@2023;";
 const sql = require("mssql");
 
-//fazendo a conexão global
+//fazendo a conexï¿½o global
 sql.connect(connStr)
    .then(conn => global.conn = conn)
    .catch(err => console.log(err));
