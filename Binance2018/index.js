@@ -8,15 +8,15 @@ var timestamp = new Date().getTime();
 var PriceBTC  = '0'
 var PriceETH  = '0'
 var PriceETHBTC  = '0'
-var StarTP = 1535716788000
+var StarTP = 1535718129999
 var xCOIN= 'BTCBUSD'
-var xTIMEOPEN=1535716788000
+var xTIMEOPEN=1535718129999
 var xOPEN='0'
 var xHIGH='0'
 var xLOW='0'
 var xCLOSE='0'
 var xVOLUME='0'
-var xTIMECLOSE=1535716788000
+var xTIMECLOSE=1535718129999
 var xASSETVOLUME='0'
 var xTRADES=0
 var xBUYBASEVOLUME='0'
@@ -56,9 +56,9 @@ sql.connect(connStr)
 binance.candlesticks(xCOIN, "1m", (error, ticks, symbol) => {
   //console.info("candlesticks()", ticks);
   let last_tick = ticks[ticks.length - 1];
+if (Array.isArray(last_tick)) {
   let [time, open, high, low, close, volume, closeTime, assetVolume, trades, buyBaseVolume, buyAssetVolume, ignored] = last_tick;
-  //console.info(symbol+" last close: "+close);
-  //console.info(closeTime);
+  
   StarTP = closeTime;
  
 xTIMEOPEN=time
@@ -72,6 +72,11 @@ xASSETVOLUME=assetVolume
 xTRADES= trades
 xBUYBASEVOLUME=buyBaseVolume
 xBUYASSETVOLUME=  buyAssetVolume
+
+  } else {
+  console.log("last_tick não é um array");
+          }
+
 
 }, {limit: 1, startTime: StarTP  });
  

@@ -56,7 +56,13 @@ sql.connect(connStr)
 binance.candlesticks(xCOIN, "1m", (error, ticks, symbol) => {
   //console.info("candlesticks()", ticks);
   let last_tick = ticks[ticks.length - 1];
-  let [time, open, high, low, close, volume, closeTime, assetVolume, trades, buyBaseVolume, buyAssetVolume, ignored] = last_tick;
+  //let [time, open, high, low, close, volume, closeTime, assetVolume, trades, buyBaseVolume, buyAssetVolume, ignored] = last_tick;
+  if(Array.isArray(last_tick)) {
+   let [time, open, high, low, close, volume, closeTime, assetVolume, trades, buyBaseVolume, buyAssetVolume, ignored] = last_tick;
+   // código que utiliza as variáveis desestruturadas
+ } else {
+   console.error("last_tick não é um array!");
+ }
   //console.info(symbol+" last close: "+close);
   //console.info(closeTime);
   StarTP = closeTime;
